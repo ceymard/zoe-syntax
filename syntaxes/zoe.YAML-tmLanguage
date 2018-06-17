@@ -1,0 +1,46 @@
+name: Zoe
+patterns:
+    - include: '#constants'
+    - include: '#keywords'
+    - include: '#strings'
+    - include: '#comments'
+    - include: '#type'
+    - include: '#function-call'
+repository:
+    keywords:
+        patterns:
+            -
+                name: keyword.control.zoe
+                match: \b(import|export|from|as|return|yield|match|with|if|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let)\b
+    constants:
+        name: constant.zoe
+        match: \b(true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
+
+    comments:
+        patterns:
+            -
+                begin: '/\*'
+                end: '\*/'
+                name: comment.block.zoe
+
+    function-call:
+        begin: \b(\w+)\(
+        end: \)
+        name: meta.function-call.zoe
+        patterns:
+            - include: '#keywords'
+            - include: '#type'
+
+    type:
+        name: entity.name.type.zoe
+        match: \b[A-Z]\w+(\[\])*\b
+
+    strings:
+        name: string.quoted.double.zoe
+        begin: '"'
+        end: '"'
+        patterns:
+            -
+                name: constant.character.escape.zoe
+                match: \\.
+scopeName: source.zoe

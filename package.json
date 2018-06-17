@@ -1,0 +1,26 @@
+{
+    "name": "Zoe",
+    "displayName": "zo",
+    "description": "Zoe language",
+    "version": "0.0.1",
+    "publisher": "ceymard",
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "zoe",
+            "aliases": ["Zoe", "zoe"],
+            "extensions": ["zo"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "zoe",
+            "scopeName": "source.zoe",
+            "path": "./syntaxes/zoe.tmLanguage"
+        }]
+    }
+}

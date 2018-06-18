@@ -1,17 +1,17 @@
 name: Zoe
 patterns:
+    - include: '#comments'
     - include: '#constants'
     - include: '#keywords'
     - include: '#strings'
-    - include: '#comments'
     - include: '#type'
-    - include: '#function-call'
+    - include: '#function'
 repository:
     keywords:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(import|export|from|as|return|yield|match|with|if|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let)\b
+                match: \b(import|try|export|from|as|return|yield|match|with|if|and|or|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
     constants:
         name: constant.zoe
         match: \b(true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
@@ -19,21 +19,26 @@ repository:
     comments:
         patterns:
             -
+                begin: '/\*\*'
+                end: '\*/'
+                name: comment.block.documentation.zoe
+                patterns:
+                    - include: source.md
+            -
                 begin: '/\*'
                 end: '\*/'
                 name: comment.block.zoe
+            -
+                match: //[^\n]*
+                name: comment.line.double-slash.zoe
 
-    function-call:
-        begin: \b(\w+)\(
-        end: \)
-        name: meta.function-call.zoe
-        patterns:
-            - include: '#keywords'
-            - include: '#type'
+    function:
+        match: \b(\w+)(?=\()
+        name: entity.name.function.zoe
 
     type:
         name: entity.name.type.zoe
-        match: \b[A-Z]\w+(\[\])*\b
+        match: \b[A-Z]\w+(\[\])*\??
 
     strings:
         name: string.quoted.double.zoe

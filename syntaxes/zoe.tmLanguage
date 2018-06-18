@@ -8,6 +8,10 @@
     <array>
       <dict>
         <key>include</key>
+        <string>#comments</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#constants</string>
       </dict>
       <dict>
@@ -20,15 +24,11 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#comments</string>
-      </dict>
-      <dict>
-        <key>include</key>
         <string>#type</string>
       </dict>
       <dict>
         <key>include</key>
-        <string>#function-call</string>
+        <string>#function</string>
       </dict>
     </array>
     <key>repository</key>
@@ -41,7 +41,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(import|export|from|as|return|yield|match|with|if|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let)\b</string>
+            <string>\b(import|try|export|from|as|return|yield|match|with|if|and|or|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
           </dict>
         </array>
       </dict>
@@ -58,40 +58,48 @@
         <array>
           <dict>
             <key>begin</key>
+            <string>/\*\*</string>
+            <key>end</key>
+            <string>\*/</string>
+            <key>name</key>
+            <string>comment.block.documentation.zoe</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>source.md</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
             <string>/\*</string>
             <key>end</key>
             <string>\*/</string>
             <key>name</key>
             <string>comment.block.zoe</string>
           </dict>
+          <dict>
+            <key>match</key>
+            <string>//[^\n]*</string>
+            <key>name</key>
+            <string>comment.line.double-slash.zoe</string>
+          </dict>
         </array>
       </dict>
-      <key>function-call</key>
+      <key>function</key>
       <dict>
-        <key>begin</key>
-        <string>\b(\w+)\(</string>
-        <key>end</key>
-        <string>\)</string>
+        <key>match</key>
+        <string>\b(\w+)(?=\()</string>
         <key>name</key>
-        <string>meta.function-call.zoe</string>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>include</key>
-            <string>#keywords</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#type</string>
-          </dict>
-        </array>
+        <string>entity.name.function.zoe</string>
       </dict>
       <key>type</key>
       <dict>
         <key>name</key>
         <string>entity.name.type.zoe</string>
         <key>match</key>
-        <string>\b[A-Z]\w+(\[\])*\b</string>
+        <string>\b[A-Z]\w+(\[\])*\??</string>
       </dict>
       <key>strings</key>
       <dict>

@@ -41,7 +41,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(import|try|export|from|as|return|yield|match|with|if|and|or|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
+            <string>\b(import|try|export|public|private|static|from|as|return|yield|match|with|if|and|or|for|implement|return|function|(un)?own(ed)?|shared|readonly|take|give|trait|struct|type|enum|let|const|async|await|lock|sizeof)\b</string>
           </dict>
         </array>
       </dict>
@@ -50,7 +50,7 @@
         <key>name</key>
         <string>constant.zoe</string>
         <key>match</key>
-        <string>\b(true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b</string>
+        <string>\b(true|false|this|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b</string>
       </dict>
       <key>comments</key>
       <dict>
@@ -99,7 +99,7 @@
         <key>name</key>
         <string>entity.name.type.zoe</string>
         <key>match</key>
-        <string>\b[A-Z]\w+(\[\])*\??</string>
+        <string>\b([A-Z]\w+(\[\])*|(i|f)(8|16|32|64))\??</string>
       </dict>
       <key>strings</key>
       <dict>

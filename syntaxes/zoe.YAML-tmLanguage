@@ -11,10 +11,10 @@ repository:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(import|try|export|from|as|return|yield|match|with|if|and|or|for|implement|return|function|own(ed)?|shared|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
+                match: \b(import|try|export|public|private|static|from|as|return|yield|match|with|if|and|or|for|implement|return|function|(un)?own(ed)?|shared|readonly|take|give|trait|struct|type|enum|let|const|async|await|lock|sizeof)\b
     constants:
         name: constant.zoe
-        match: \b(true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
+        match: \b(true|false|this|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
 
     comments:
         patterns:
@@ -38,7 +38,7 @@ repository:
 
     type:
         name: entity.name.type.zoe
-        match: \b[A-Z]\w+(\[\])*\??
+        match: \b([A-Z]\w+(\[\])*|(i|f)(8|16|32|64))\??
 
     strings:
         name: string.quoted.double.zoe

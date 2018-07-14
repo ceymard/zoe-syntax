@@ -11,25 +11,27 @@ repository:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(import|try|export|public|private|static|from|as|return|yield|match|with|if|and|or|for|implement|return|function|(un)?own(ed)?|shared|readonly|take|give|trait|struct|type|enum|let|const|async|await|lock|sizeof)\b
+                match: \b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
     constants:
         name: constant.zoe
-        match: \b(true|false|this|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
+        match: \b(null|this|true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
 
     comments:
         patterns:
             -
-                begin: '/\*\*'
-                end: '\*/'
+                begin: '#\(\('
+                end: '#\)'
                 name: comment.block.documentation.zoe
                 patterns:
                     - include: source.md
             -
-                begin: '/\*'
-                end: '\*/'
+                begin: '#\('
+                end: '#\)'
                 name: comment.block.zoe
+                patterns:
+                    - include: '#comments'
             -
-                match: //[^\n]*
+                match: '#[^\n]*'
                 name: comment.line.double-slash.zoe
 
     function:
@@ -38,14 +40,32 @@ repository:
 
     type:
         name: entity.name.type.zoe
-        match: \b([A-Z]\w+(\[\])*|(i|f)(8|16|32|64))\??
+        match: \b[A-Z]\w*(\[\])*\??
 
     strings:
-        name: string.quoted.double.zoe
-        begin: '"'
-        end: '"'
-        patterns:
-            -
-                name: constant.character.escape.zoe
-                match: \\.
+      patterns:
+        -
+          name: string.quoted.double.zoe
+          begin: '"'
+          end: '"'
+          patterns:
+              -
+                  name: constant.character.escape.zoe
+                  match: \\.
+        -
+          name: string.quoted.single.zoe
+          begin: "'"
+          end: "'"
+          patterns:
+              -
+                  name: constant.character.escape.zoe
+                  match: \\.
+        -
+          name: string.quoted.template.zoe
+          begin: '`'
+          end: '`'
+          patterns:
+              -
+                  name: constant.character.escape.zoe
+                  match: \\.
 scopeName: source.zoe

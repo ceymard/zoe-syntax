@@ -41,7 +41,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(import|try|export|public|private|static|from|as|return|yield|match|with|if|and|or|for|implement|return|function|(un)?own(ed)?|shared|readonly|take|give|trait|struct|type|enum|let|const|async|await|lock|sizeof)\b</string>
+            <string>\b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
           </dict>
         </array>
       </dict>
@@ -50,7 +50,7 @@
         <key>name</key>
         <string>constant.zoe</string>
         <key>match</key>
-        <string>\b(true|false|this|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b</string>
+        <string>\b(null|this|true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b</string>
       </dict>
       <key>comments</key>
       <dict>
@@ -58,9 +58,9 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>/\*\*</string>
+            <string>#\(\(</string>
             <key>end</key>
-            <string>\*/</string>
+            <string>#\)</string>
             <key>name</key>
             <string>comment.block.documentation.zoe</string>
             <key>patterns</key>
@@ -73,15 +73,22 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>/\*</string>
+            <string>#\(</string>
             <key>end</key>
-            <string>\*/</string>
+            <string>#\)</string>
             <key>name</key>
             <string>comment.block.zoe</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comments</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>match</key>
-            <string>//[^\n]*</string>
+            <string>#[^\n]*</string>
             <key>name</key>
             <string>comment.line.double-slash.zoe</string>
           </dict>
@@ -99,23 +106,66 @@
         <key>name</key>
         <string>entity.name.type.zoe</string>
         <key>match</key>
+<<<<<<< Updated upstream
         <string>\b([A-Z]\w+(\[\])*|(i|f)(8|16|32|64))\??</string>
+=======
+        <string>\b[A-Z]\w*(\[\])*\??</string>
+>>>>>>> Stashed changes
       </dict>
       <key>strings</key>
       <dict>
-        <key>name</key>
-        <string>string.quoted.double.zoe</string>
-        <key>begin</key>
-        <string>"</string>
-        <key>end</key>
-        <string>"</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>name</key>
-            <string>constant.character.escape.zoe</string>
-            <key>match</key>
-            <string>\\.</string>
+            <string>string.quoted.double.zoe</string>
+            <key>begin</key>
+            <string>"</string>
+            <key>end</key>
+            <string>"</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>constant.character.escape.zoe</string>
+                <key>match</key>
+                <string>\\.</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.single.zoe</string>
+            <key>begin</key>
+            <string>'</string>
+            <key>end</key>
+            <string>'</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>constant.character.escape.zoe</string>
+                <key>match</key>
+                <string>\\.</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.template.zoe</string>
+            <key>begin</key>
+            <string>`</string>
+            <key>end</key>
+            <string>`</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>constant.character.escape.zoe</string>
+                <key>match</key>
+                <string>\\.</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>

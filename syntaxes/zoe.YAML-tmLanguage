@@ -49,13 +49,26 @@ repository:
           begin: '"'
           end: '"'
           patterns:
-              -
-                  name: constant.character.escape.zoe
-                  match: \\.
+            -
+                name: constant.character.escape.zoe
+                match: \\.
+            -
+                begin: '\$\{'
+                end: '\}'
+                patterns:
+                - include: source.zoe
         -
           name: string.quoted.single.zoe
           begin: "'"
           end: "'"
+          patterns:
+              -
+                  name: constant.character.escape.zoe
+                  match: \\.
+        -
+          name: string.regexp.zoe
+          begin: '/'
+          end: '/[igmu]*'
           patterns:
               -
                   name: constant.character.escape.zoe
@@ -68,4 +81,9 @@ repository:
               -
                   name: constant.character.escape.zoe
                   match: \\.
+              -
+                  begin: '\$\{'
+                  end: '\}'
+                  patterns:
+                    - include: source.zoe
 scopeName: source.zoe

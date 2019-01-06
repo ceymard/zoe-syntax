@@ -41,7 +41,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
+            <string>\b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
           </dict>
         </array>
       </dict>

@@ -6,12 +6,13 @@ patterns:
     - include: '#strings'
     - include: '#type'
     - include: '#function'
+    - include: '#atnames'
 repository:
     keywords:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
+                match: \b(closure|import|compile|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
     constants:
         name: constant.zoe
         match: \b(null|this|true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
@@ -37,6 +38,10 @@ repository:
     function:
         match: \b(\w+)(?=\()
         name: entity.name.function.zoe
+
+    atnames:
+        name: entity.name.tag.zoe
+        match: @\w+
 
     type:
         name: entity.name.type.zoe

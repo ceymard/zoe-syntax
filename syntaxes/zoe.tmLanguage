@@ -30,6 +30,10 @@
         <key>include</key>
         <string>#function</string>
       </dict>
+      <dict>
+        <key>include</key>
+        <string>#atnames</string>
+      </dict>
     </array>
     <key>repository</key>
     <dict>
@@ -41,7 +45,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(closure|import|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
+            <string>\b(closure|import|compile|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b</string>
           </dict>
         </array>
       </dict>
@@ -100,6 +104,13 @@
         <string>\b(\w+)(?=\()</string>
         <key>name</key>
         <string>entity.name.function.zoe</string>
+      </dict>
+      <key>atnames</key>
+      <dict>
+        <key>name</key>
+        <string>entity.name.tag.zoe</string>
+        <key>match</key>
+        <string>@\w+</string>
       </dict>
       <key>type</key>
       <dict>

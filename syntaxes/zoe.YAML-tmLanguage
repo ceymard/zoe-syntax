@@ -12,10 +12,10 @@ repository:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(closure|import|compile|trait|implement(s)|where|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|implement|return|function|own(ed)?|shared|borrow(s)?|readonly|take|give|struct|type|enum|let|const|async|await|lock)\b
+                match: \b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|implement|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b
     constants:
         name: constant.zoe
-        match: \b(null|this|true|false|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
+        match: \b(null|this|true|false|nothing|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
 
     comments:
         patterns:

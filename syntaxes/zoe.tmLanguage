@@ -110,7 +110,7 @@
         <key>name</key>
         <string>entity.name.tag.zoe</string>
         <key>match</key>
-        <string>@\w+</string>
+        <string>@\w+|@\([^\)]*\)|%\w+</string>
       </dict>
       <key>type</key>
       <dict>

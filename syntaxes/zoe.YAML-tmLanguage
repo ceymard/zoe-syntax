@@ -41,7 +41,7 @@ repository:
 
     atnames:
         name: entity.name.tag.zoe
-        match: @\w+
+        match: @\w+|@\([^\)]*\)|%\w+
 
     type:
         name: entity.name.type.zoe

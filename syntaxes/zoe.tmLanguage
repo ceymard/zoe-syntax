@@ -45,7 +45,7 @@
             <key>name</key>
             <string>keyword.control.zoe</string>
             <key>match</key>
-            <string>\b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|implement|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b</string>
+            <string>\b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|impl|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b</string>
           </dict>
         </array>
       </dict>

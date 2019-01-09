@@ -12,7 +12,7 @@ repository:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|implement|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b
+                match: \b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|impl|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b
     constants:
         name: constant.zoe
         match: \b(null|this|true|false|nothing|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b

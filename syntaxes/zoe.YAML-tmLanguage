@@ -1,8 +1,9 @@
 name: Zoe
 patterns:
-    - include: '#comments'
-    - include: '#constants'
     - include: '#keywords'
+    - include: '#constants'
+    - include: '#comments'
+    - include: '#llvm'
     - include: '#strings'
     - include: '#type'
     - include: '#function'
@@ -12,43 +13,66 @@ repository:
         patterns:
             -
                 name: keyword.control.zoe
-                match: \b(closure|fn|import|compile|trait|default|try|export|from|as|return|yield|match|with|if|in|else|and|or|for|break|continue|impl|macro|stop|return|function|readonly|struct|type|enum|union|let|const|async|await|lock)\b
+                match: \b(namespace|take|iso(late)?|as|(?:err)?defer|errdefer|method|inline|where|from|import|export|local|is|not|trait|has|wants|switch|try|catch|\$?if|in|elif|else|or|not|\$?for|\$?while|break|continue|yield|return|fn|unsafe|struct|distinct|type(of)?|enum|union|let|const|var|extern)\b|\$(switch|while|for|if|else)
     constants:
         name: constant.zoe
-        match: \b(null|this|true|false|nothing|(\d+|(\d+)?\.\d+)((i|f)(32|64))?)\b
+        match: \b(null|void|none|never|nothing|any|this|true|false|stub|builtin|stub|error|(0[xb])?(\d[\d_]*\.)?[\d_]+)\b
+
+    llvm:
+        begin: '(\bllvm\b)\s*(\{)'
+        end: '\}'
+        beginCaptures:
+            "0": {name: keyword.control.zoe}
+        name: source.llvm
+        patterns:
+            - include: source.c
 
     comments:
         patterns:
             -
-                begin: '#\(\('
-                end: '#\)'
+                begin: '/\*\?'
+                end: '\*/'
                 name: comment.block.documentation.zoe
                 patterns:
                     - include: source.md
             -
-                begin: '#\('
-                end: '#\)'
+                begin: '/\*'
+                end: '\*/'
                 name: comment.block.zoe
                 patterns:
                     - include: '#comments'
             -
-                match: '#[^\n]*'
+                match: '//(\![\w_-]+)?[^\n]*'
                 name: comment.line.double-slash.zoe
+                captures:
+                    1: { name: string.pragma.zoe }
 
     function:
-        match: \b(\w+)(?=\()
+        match: (\w+)(?:\[([^\]]*)\])?(::\w+)?(?=\()
         name: entity.name.function.zoe
+        captures:
+            2: { name: entity.name.type.zoe }
+            3: { name: entity.name.tag.zoe }
 
     atnames:
         name: entity.name.tag.zoe
-        match: @\w+|@\([^\)]*\)|%\w+
+        match: @\*?|#
 
     type:
         name: entity.name.type.zoe
-        match: \b[A-Z]\w*(\[\])*\??
+        match: \bany\b|(\b[a-zA-Z]\w*\.)*\$?\b[A-Z]\w*(\[\])*\??
 
     strings:
       patterns:
+        -
+          name: string.char.zoe
+          match: \\\\?.
+
+        -
+          name: string.quoted.literal.zoe
+          begin: '`'
+          end: '`'
+
         -
           name: string.quoted.double.zoe
           begin: '"'
@@ -58,7 +82,7 @@ repository:
                 name: constant.character.escape.zoe
                 match: \\.
             -
-                begin: '\$\{'
+                begin: '\{'
                 end: '\}'
                 patterns:
                 - include: source.zoe
@@ -70,25 +94,4 @@ repository:
               -
                   name: constant.character.escape.zoe
                   match: \\.
-        -
-          name: string.regexp.zoe
-          begin: '/'
-          end: '/[igmu]*'
-          patterns:
-              -
-                  name: constant.character.escape.zoe
-                  match: \\.
-        -
-          name: string.quoted.template.zoe
-          begin: '`'
-          end: '`'
-          patterns:
-              -
-                  name: constant.character.escape.zoe
-                  match: \\.
-              -
-                  begin: '\$\{'
-                  end: '\}'
-                  patterns:
-                    - include: source.zoe
 scopeName: source.zoe
